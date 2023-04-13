@@ -100,36 +100,12 @@ public class ConnectGame {
 	 *         diagonally on the grid, false otherwise
 	 */
 	public boolean isAdjacent(Tile t1, Tile t2) {
-		boolean isAdjacent = false;
-		try {
-			if (t1.getX() == t2.getX() && t1.getY() == t2.getY() - 1) {
-				isAdjacent = true;
-			}
-			if (t1.getX() == t2.getX() && t1.getY() == t2.getY() + 1) {
-				isAdjacent = true;
-			}
-			if (t1.getX() == t2.getX() - 1 && t1.getY() == t2.getY()) {
-				isAdjacent = true;
-			}
-			if (t1.getX() == t2.getX() + 1 && t1.getY() == t2.getY()) {
-				isAdjacent = true;
-			}
-			if (t1.getX() == t2.getX() - 1 && t1.getY() == t2.getY() - 1) {
-				isAdjacent = true;
-			}
-			if (t1.getX() == t2.getX() + 1 && t1.getY() == t2.getY() + 1) {
-				isAdjacent = true;
-			}
-			if (t1.getX() == t2.getX() - 1 && t1.getY() == t2.getY() + 1) {
-				isAdjacent = true;
-			}
-			if (t1.getX() == t2.getX() + 1 && t1.getY() == t2.getY() - 1) {
-				isAdjacent = true;
-			}
-		} catch (NullPointerException e) {
-			return isAdjacent;
-		}
-		return isAdjacent;
+	    if (t1 == null || t2 == null) {
+		return false;
+	    }
+	    int xDiff = Math.abs(t1.getX() - t2.getX());
+	    int yDiff = Math.abs(t1.getY() - t2.getY());
+	    return xDiff <= 1 && yDiff <= 1 && xDiff + yDiff != 0;
 	}
 
 	/**
