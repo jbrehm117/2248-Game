@@ -100,12 +100,15 @@ public class ConnectGame {
 	 *         diagonally on the grid, false otherwise
 	 */
 	public boolean isAdjacent(Tile t1, Tile t2) {
-	    if (t1 == null || t2 == null) {
-		return false;
-	    }
-	    int xDiff = Math.abs(t1.getX() - t2.getX());
-	    int yDiff = Math.abs(t1.getY() - t2.getY());
-	    return xDiff <= 1 && yDiff <= 1 && xDiff + yDiff != 0;
+		try {
+		    if (t1 == null || t2 == null) {
+			return false;
+		    }
+		    int xDiff = Math.abs(t1.getX() - t2.getX());
+		    int yDiff = Math.abs(t1.getY() - t2.getY());
+		    return xDiff <= 1 && yDiff <= 1 && xDiff + yDiff != 0;
+		} catch (ArrayIndexOutOfBounds e) {
+		}
 	}
 
 	/**
